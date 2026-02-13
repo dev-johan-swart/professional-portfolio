@@ -3,7 +3,7 @@
 This repository contains the source code for my professional frontend developer portfolio.
 
 ## Live Site
-https://johan-swart-portfolio.vercel.app/
+https://professional-portfolio-beta-nine.vercel.app/
 
 ## Overview
 
