@@ -1,43 +1,280 @@
-* { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, sans-serif; }
-:root { --bg: #f2f8fc; --text: #222; --card: #ffffff; --accent: #0077cc; }
-body.dark { --bg: #111; --text: #f1f1f1; --card: #1e1e1e; --accent: #4da3ff; }
-body { line-height: 1.6; background: var(--bg); color: var(--text); }
-.container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
-header { text-align: center; padding-top: 4rem; }
-h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
-.subtitle { font-size: 1.2rem; color: #555; margin-bottom: 1rem; }
-.intro { max-width: 600px; margin: 0 auto 2rem; }
-.hero-buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
-.btn, .btn-outline { padding: 0.7rem 1.4rem; border-radius: 6px; text-decoration: none; font-weight: 600; cursor: pointer; }
-.btn { background: #111; color: #fff; border: none; }
-.btn-outline { border: 2px solid #0077cc; color: #0077cc; background: none; }
-.section { margin-top: 3rem; }
-h2 { margin-bottom: 1.5rem; }
-.skills { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.5rem; }
-.project { margin-bottom: 2rem; }
-.project img { max-width: 100%; border-radius: 8px; margin-bottom: 0.5rem; }
-.project-links a { margin-right: 1rem; text-decoration: none; color: #0077cc; font-weight: 500; }
-.highlight { background: var(--card); border-radius: 8px; padding: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
-.footer { text-align: center; padding: 3rem 0; font-size: 0.9rem; color: #666; }
-.image-wrapper { width: 100%; height: 250px; overflow: hidden; border-radius: 10px; background: var(--card); display: flex; align-items: center; justify-content: center; }
-.image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+/* ==============================
+   RESET & BASE
+================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-/* POPUP CONTACT */
-.popup { display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); justify-content: center; align-items: center; }
-.popup-content { background: var(--card); padding: 2rem; border-radius: 8px; max-width: 400px; width: 90%; position: relative; text-align: center; }
-.popup-content .close { position: absolute; top: 0.5rem; right: 1rem; cursor: pointer; font-size: 1.5rem; color: #333; }
+html {
+  scroll-behavior: smooth;
+}
 
-/* RESPONSIVE */
-@media (max-width: 600px) { h1 { font-size: 2rem; } }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
 
-/* DARK TOGGLE */
-.theme-toggle { position: fixed; top: 20px; right: 20px; }
-.switch { position: relative; display: inline-block; width: 50px; height: 24px; }
-.switch input { display: none; }
-.slider { position: absolute; cursor: pointer; inset: 0; background-color: var(--accent); border-radius: 24px; transition: .3s; }
-.slider:before { content: ""; position: absolute; height: 18px; width: 18px; left: 3px; bottom: 3px; background: white; border-radius: 50%; transition: .3s; }
-input:checked + .slider { background-color: var(--accent); }
-input:checked + .slider:before { transform: translateX(26px); }
+/* ==============================
+   DESIGN TOKENS
+================================= */
+:root {
+  --color-bg: #f2f8fc;
+  --color-text: #222;
+  --color-card: #ffffff;
+  --color-accent: #0077cce8;
+  --color-muted: #666;
+  --radius: 8px;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --container-width: 900px;
+}
 
-@media(max-width:600px) { h1{font-size:2rem;} .image-wrapper{height:200px;} }
+body.dark {
+  --color-bg: #111;
+  --color-text: #f1f1f1;
+  --color-card: #1e1e1e;
+  --color-accent: #4da3ff;
+  --color-muted: #aaa;
+}
 
+/* ==============================
+   LAYOUT
+================================= */
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.section {
+  margin-top: 3rem;
+}
+
+header {
+  padding-top: 4rem;
+  text-align: center;
+}
+
+/* ==============================
+   TYPOGRAPHY
+================================= */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--color-accent);
+  padding-bottom: 0.3rem;
+}
+
+.subtitle {
+  font-size: 1.3rem;
+  color: var(--color-muted);
+  margin-bottom: 0.5rem;
+}
+
+.intro {
+  max-width: 600px;
+  margin: 1rem auto 2rem;
+}
+
+/* ==============================
+   BUTTONS
+================================= */
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn,
+.btn-outline {
+  padding: 0.7rem 1.4rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn {
+  background: #111;
+  color: #fff;
+  border: none;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn-outline {
+  border: 2px solid var(--color-accent);
+  color: var(--color-accent);
+  background: transparent;
+}
+
+.btn-outline:hover {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+/* ==============================
+   SKILLS GRID
+================================= */
+.skills {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+/* ==============================
+   PROJECT CARDS
+================================= */
+.project,
+.highlight {
+  background: var(--color-card);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 2rem;
+}
+
+.image-wrapper {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-links a {
+  margin-right: 1rem;
+  font-weight: 500;
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.project-links a:hover {
+  text-decoration: underline;
+}
+
+/* ==============================
+   CONTACT
+================================= */
+.contact {
+  text-align: left;
+}
+
+/* ==============================
+   POPUP
+================================= */
+.popup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup-content {
+  background: var(--color-card);
+  padding: 2rem;
+  border-radius: var(--radius);
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+  text-align: center;
+}
+
+.popup-content .close {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* ==============================
+   DARK MODE TOGGLE
+================================= */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+}
+
+.switch {
+  position: relative;
+  width: 50px;
+  height: 24px;
+  display: inline-block;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  background: var(--color-accent);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background: #fff;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+input:checked + .slider::before {
+  transform: translateX(26px);
+}
+
+.footer {
+    text-align: center; 
+    padding: 2rem 0; 
+    font-size: 
+    0.9rem; 
+    color: #666; 
+}
+
+/* ==============================
+   RESPONSIVE
+================================= */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .image-wrapper {
+    height: 200px;
+  }
+}

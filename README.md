@@ -45,6 +45,7 @@ Each project includes:
 - Accessible semantic structure
 - Contact popup menu
 - Clean project presentation
+- Access to certification and experimental projects
 
 ## Deployment
 
