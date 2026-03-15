@@ -1,6 +1,4 @@
-/* ==============================
-   RESET & BASE
-================================= */
+/* RESET & BASE */
 *,
 *::before,
 *::after {
@@ -20,9 +18,7 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* ==============================
-   DESIGN TOKENS
-================================= */
+/* DESIGN */
 :root {
   --color-bg: #f2f8fc;
   --color-text: #222;
@@ -42,9 +38,7 @@ body.dark {
   --color-muted: #aaa;
 }
 
-/* ==============================
-   LAYOUT
-================================= */
+/* LAYOUT */
 .container {
   max-width: var(--container-width);
   margin: 0 auto;
@@ -60,9 +54,7 @@ header {
   text-align: center;
 }
 
-/* ==============================
-   TYPOGRAPHY
-================================= */
+/* TYPOGRAPHY */
 h1 {
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
@@ -86,9 +78,7 @@ h2 {
   margin: 1rem auto 2rem;
 }
 
-/* ==============================
-   BUTTONS
-================================= */
+/* BUTTONS */
 .hero-buttons {
   display: flex;
   justify-content: center;
@@ -127,9 +117,7 @@ h2 {
   color: #fff;
 }
 
-/* ==============================
-   SKILLS GRID
-================================= */
+/* SKILLS GRID */
 .skills {
   list-style: none;
   padding: 0;
@@ -138,9 +126,7 @@ h2 {
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
 }
 
-/* ==============================
-   PROJECT CARDS
-================================= */
+/* PROJECT CARDS */
 .project,
 .highlight {
   background: var(--color-card);
@@ -175,9 +161,7 @@ h2 {
   text-decoration: underline;
 }
 
-/* ==============================
-   POPUP
-================================= */
+/* POPUP */
 .popup {
   display: none;
   position: fixed;
@@ -206,9 +190,7 @@ h2 {
   cursor: pointer;
 }
 
-/* ==============================
-   DARK MODE TOGGLE
-================================= */
+/* DARK MODE TOGGLE */
 .theme-toggle {
   position: fixed;
   top: 20px;
@@ -259,9 +241,7 @@ input:checked + .slider::before {
     color: #666; 
 }
 
-/* ==============================
-   RESPONSIVE
-================================= */
+/* RESPONSIVE */
 @media (max-width: 600px) {
   h1 {
     font-size: 2rem;
